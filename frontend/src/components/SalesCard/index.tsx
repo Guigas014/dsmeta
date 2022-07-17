@@ -1,4 +1,5 @@
-import React, { useState } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
+import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -16,6 +17,13 @@ export function SalesCard() {
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
 
+  useEffect(() => {
+    axios.get("https://gui-dsmeta.herokuapp.com/sales")
+    .then (response => {
+      console.log(response.data)
+    })
+  }, []);
+    
   
 
   return ( 
